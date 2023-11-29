@@ -1,0 +1,62 @@
+function equals(v1,v2)
+VAR
+    i:integer
+    equals:boolean
+BEGIN
+    //chercher si les deux vecteurs sont de meme longueur
+    IF length(v1) = length(v2) THEN
+                equals := true
+            ELSE
+                equals := false
+            END_IF
+    return equals
+END
+
+
+PROCEDURE dot_product(v1, v2, equal,ps)
+VAR
+    i:integer
+    ps:integer
+BEGIN
+    ps := 0
+    IF (equal) THEN 
+        FOR i FROM 1 TO length(v1) step 1  DO
+            ps := ps + v1[i] * v2[i]
+        END_FOR
+    ELSE
+        write("impossible de calculer")
+    END_IF
+FIN PROCEDURE
+
+
+ALGORITHM vecteur
+VAR
+    k,lengthV1,lengthV2:integer
+    v1 : ARRAY_OF integer[10];
+    v2 : ARRAY_OF integer[10];
+BEGIN
+    //tester les tailles de v1 et v2
+    REPEAT
+        write("taille de v1")
+        read(lengthV1)
+        write("taille de v2")
+        read(lengthV2)
+    UNTIL (lengthV1 = lengthV2)
+    //remplir v1 et v2 
+    FOR k FROM 0 TO length(v1)-1 1 step 1 DO
+        read(v1[k])
+    END_FOR
+    FOR k FROM 0 TO length(v2)-1 1 step 1 DO
+        read(v2[k])
+    END_FOR
+    //appel de fonction d égalité 
+    equal:=equals(v1,v2)
+    //appel de procedure de  produit scalaire 
+    dot_product(v1, v2, equal,ps)
+    //affichage de resultat
+    IF ps = 0 THEN
+        write("Les vecteurs sont orthogonaux.")
+    ELSE
+        write("Les vecteurs ne sont pas orthogonaux.")
+END 
+
