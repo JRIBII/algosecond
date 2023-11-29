@@ -1,0 +1,30 @@
+ALGORITHM algo1
+VAR
+    tab1 : ARRAY_OF integer[50];
+    tab2 : ARRAY_OF integer[50];
+    i,j,n,m,sum :integer;
+BEGIN
+    // remplir tab1
+    write ("donner la taille de premier tableau")
+    read (n)
+    FOR i FROM 0 TO n-1 DO
+        write ("donner la valeur de tab1[",i,"]")
+        read (tab1[i])
+    END FOR
+    // remplir tab2
+    write ("donner la taille de deuxieme tableau")
+    read (m)
+    FOR i FROM 0 TO m-1 DO
+        write ("donner la valeur de tab2[",i,"]")
+        read (tab2[i])
+    END FOR
+    //find the sum of all distinct elements
+    sum := 0
+    FOR i FROM 0 TO n-1 DO
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            IF tab1[i] = tab2[j] THEN
+                sum := sum + tab1[i]
+            END IF
+        END FOR
+    END FOR
+END
